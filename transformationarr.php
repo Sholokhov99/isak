@@ -17,6 +17,11 @@ class TransformationArr
         return $title .self::SPLIT_ARRAY_ITEMS .implode(", ", $data) .self::SPLIT_ARRAY_ITEMS;
     }
 
+    private function setInfo(string $title, array $data): void
+    {
+        array_push($this->arInfo, $this->getStringFromArray($title, $data));
+    }
+
     public function getInfoToString(): string
     {
         return implode(self::SPLIT_ARRAY_ITEMS, $this->arInfo);
@@ -29,7 +34,8 @@ class TransformationArr
         {
             array_push($arItems, rand(self::MIN_VALUE, self::MAX_VALUE));
         }
-        array_push($this->arInfo, $this->getStringFromArray("Первоначальный массив: ", $arItems));
+
+        $this->setInfo("Первоначальный массив: ", $arItems);
         return $arItems;
     }
 
@@ -53,9 +59,9 @@ class TransformationArr
                 }
             }
         }
-        array_push($this->arInfo, $this->getStringFromArray("Преобразованный массив: ", $this->arItems));
-        array_push($this->arInfo, $this->getStringFromArray("Новый массив: ", $newArray));
-        array_push($this->arInfo, $this->getStringFromArray("Сумма значений нового массива: ", array($this->smmItemsNewArray) ));
+        $this->setInfo("Преобразованный массив: ", $this->arItems);
+        $this->setInfo("Новый массив: ", $newArray);
+        $this->setInfo("Сумма значений нового массива: ", array($this->smmItemsNewArray));
         return $newArray;
     }
 
