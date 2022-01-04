@@ -30,6 +30,8 @@ list<int> setRandValues() {
         arValues.push_back( rand() % (maxRand - minRand));
     }
 
+    printList(arValues, "Начальный массив");
+
     return arValues;
 }
 
@@ -46,10 +48,11 @@ bool isValideValue(int number) {
 }
 
 // Трансформация массива
-list<int> transformationArray(list<int> &arValues, int &summNewArrItems) {
+list<int> transformationArray(list<int> &arValues) {
     // Массив с новыми значениями
     list<int> newArray = {};
     int transformValue = 6;
+    int summNewArrItems = 0;
 
     for (auto iter = arValues.begin(); iter != arValues.end(); iter++){
         *iter -= transformValue;
@@ -59,23 +62,21 @@ list<int> transformationArray(list<int> &arValues, int &summNewArrItems) {
         }
     }
 
+    printList(arValues, "Преобразованный массив");
+
+    printList(newArray, "Новый массив");
+
+    cout << "\nСумма значений в новом массиве:\n" << summNewArrItems << "\n";
+
     return newArray;
 }
 
 int main() {
     setlocale(LC_ALL, "rus");
-    int summNewArrItems = 0;
     
     list<int> arItems = setRandValues();
 
-    printList(arItems, "Начальный массив");
+    list<int> newArray = transformationArray(arItems);
 
-    list<int> newArray = transformationArray(arItems, summNewArrItems);
-
-    printList(arItems, "Преобразованный массив");
-
-    printList(newArray, "Новый массив");
-
-    cout << "\nСумма значений в новом массиве:\n" << summNewArrItems << "\n";
     return 0;
 }
