@@ -29,7 +29,7 @@ class TransformationArr
         {
             array_push($arItems, rand(self::MIN_VALUE, self::MAX_VALUE));
         }
-
+        array_push($this->arInfo, $this->getStringFromArray("Первоначальный массив: ", $arItems));
         return $arItems;
     }
 
@@ -53,18 +53,16 @@ class TransformationArr
                 }
             }
         }
-
+        array_push($this->arInfo, $this->getStringFromArray("Преобразованный массив: ", $this->arItems));
+        array_push($this->arInfo, $this->getStringFromArray("Новый массив: ", $newArray));
+        array_push($this->arInfo, $this->getStringFromArray("Сумма значений нового массива: ", array($this->smmItemsNewArray) ));
         return $newArray;
     }
 
     public function main(): void
     {
         $this->arItems = $this->getRandArrValues();
-        array_push($this->arInfo, $this->getStringFromArray("Первоначальный массив: ", $this->arItems));
         $newArItems = $this->transformationArray();
-        array_push($this->arInfo, $this->getStringFromArray("Преобразованный массив: ", $this->arItems));
-        array_push($this->arInfo, $this->getStringFromArray("Новый массив: ", $newArItems));
-        array_push($this->arInfo, $this->getStringFromArray("Сумма значений нового массива: ", array($this->smmItemsNewArray) ));
     }
 }
 ?>
